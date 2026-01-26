@@ -18,5 +18,11 @@ public class Player {
 	private boolean hasRow;       // Para saber si ya cantó ROW
 	private boolean hasBingo;     // Para saber si ya cantó BINGO
 	
-	
+	//Constructor de la clase 
+	public Player(String name, Bingocard card) {
+		this.name = name;
+		this.card = card;
+		this.hasRow = false;
+		this.hasBingo = false;
+	}
 }
