@@ -4,25 +4,24 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class Caller {
-    // List to store the numbers (Bingo balls)
+    // List to store numbers from 1 to 99
     private ArrayList<Integer> numbersBox = new ArrayList<>();
 
-    // Constructor: Initializes the box with numbers 1 to 99 and shuffles them
+    // Constructor: Fills the list and shuffles it
     public Caller() {
         for (int i = 1; i <= 99; i++) {
             numbersBox.add(i);
         }
-        // Shuffle the list to simulate random drawing
+        // Randomize the order of numbers
         Collections.shuffle(numbersBox);
     }
 
-    // Method to draw a number from the box
+    // Draws the next number from the list
     public int drawNumber() {
-        // Check if there are numbers left
         if (numbersBox.isEmpty()) {
-            return -1; // Return -1 if the box is empty
+            return -1; // No numbers left
         }
-        // Remove and return the first number from the list
+        // Remove and return the first number
         return numbersBox.remove(0); 
     }
 }
