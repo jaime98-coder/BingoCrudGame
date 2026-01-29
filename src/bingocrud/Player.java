@@ -52,7 +52,7 @@ public class Player {
         // If ROW has NOT been called yet AND the card has a line...
         if (!hasRow && card.checkLine()) {
             hasRow = true; // Update to avoid re-entering
-            System.out.println("! " + this.name + " SHOUTS ROW!");
+            System.out.println(this.name + " SHOUTS ROW!");
             return true;
         }
         return false;
@@ -63,7 +63,7 @@ public class Player {
         // If BINGO has NOT been called yet AND the card has bingo...
         if (!hasBingo && card.checkBingo()) {
             hasBingo = true;
-            System.out.println("!!! " + this.name + " SHOUTS BINGO !!!");
+            System.out.println(this.name + " SHOUTS BINGO !!!");
             return true;
         }
         return false;

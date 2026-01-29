@@ -41,7 +41,7 @@ public class Game {
                 break;
             }
 
-            System.out.println(">> NUMBER DRAWN: [ " + currentNumber + " ]");
+            System.out.println("NUMBER DRAWN: [ " + currentNumber + " ]");
 
             // --- PLAYER 1 TURN ---
             
@@ -53,9 +53,8 @@ public class Game {
             
             // C. Check for BINGO (The method prints "BINGO" if found)
             if (p1.checkBingo()) {
-                System.out.println("\n***********************************");
+                System.out.println("\n----------");
                 System.out.println("   WINNER: " + p1.getName());
-                System.out.println("***********************************");
                 gameOver = true; // Stop the loop
             }
 
@@ -70,9 +69,8 @@ public class Game {
                 
                 // C. Check for BINGO
                 if (p2.checkBingo()) {
-                    System.out.println("\n***********************************");
+                    System.out.println("\n----------");
                     System.out.println("   WINNER: " + p2.getName());
-                    System.out.println("***********************************");
                     gameOver = true; // Stop the loop
                 }
             }
