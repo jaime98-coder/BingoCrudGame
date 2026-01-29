@@ -3,81 +3,81 @@ package bingocrud;
 import java.util.Random;
 
 public class Card {
-    // Tu matriz y tu objeto Random
+    // 3x5 Matrix and Random object
     int[][] card = new int[3][5];
     Random rd = new Random();
 
-    // Constructor: Rellenamos la carta nada más crearla
+    // Constructor: Automatically fill the card upon creation
     public Card() {
         fillCard();
     }
 
-    // Generar número (lo hago private porque es de uso interno)
+    // Generate a number (private because it is for internal use)
     private int generateNumber() {
         int cardNumber;
-        // nextInt(1, 100) genera del 1 al 99
+        // nextInt(1, 100) generates numbers from 1 to 99
         cardNumber = rd.nextInt(1, 100); 
         return cardNumber;
     }
 
-    // Rellenar la matriz sin repetidos
+    // Fill the matrix without duplicates
     public void fillCard() {
         for (int i = 0; i < card.length; i++) {
             for (int j = 0; j < card[i].length; j++) {
                 
                 int num;
-                boolean repetido;
+                boolean repeated;
 
                 do {
                     num = generateNumber();
-                    repetido = false; // Asumimos que es nuevo
+                    repeated = false; // Assume it is new
 
-                    // Recorremos toda la matriz para ver si ya existe ese 'num'
+                    // Iterate through the entire matrix to check if 'num' already exists
                     for (int r = 0; r < card.length; r++) {
                         for (int c = 0; c < card[r].length; c++) {
                             if (card[r][c] == num) {
-                                repetido = true; // ¡Lo encontramos! Está repetido
+                                repeated = true; // Found it! It is repeated
                             }
                         }
                     }
-                    // Si 'repetido' es true, el while se repite y busca otro número
-                } while (repetido);
+                    // If 'repeated' is true, the loop repeats to find another number
+                } while (repeated);
 
-                // Si llegamos aquí es que es único, lo guardamos
+                // If we reach here, the number is unique; save it
                 card[i][j] = num;
             }
         }
     }
 
-    // Mostrar carta
+    // Show card
     public void showCard() {
         System.out.println("┌──────────────────────────────┐");
         for (int i = 0; i < card.length; i++) {
-            System.out.print("│ "); // Borde izquierdo
+            System.out.print("│ "); // Left border
             for (int j = 0; j < card[i].length; j++) {
                 
-                // Si es -1 mostramos una X, si no, mostramos el número
+                // If it is -1, show an X; otherwise, show the number
                 if (card[i][j] == -1) {
                     System.out.print(" X \t");
                 } else {
-                    // El condicional es para poner un 0 delante si es menor de 10 (estética)
+                    // Conditional to add a leading 0 if less than 10 (formatting)
                     System.out.print((card[i][j] < 10 ? "0" : "") + card[i][j] + "\t");
                 }
                 
             }
-            System.out.println("│"); // Borde derecho y salto de línea
+            System.out.println("│"); // Right border and new line
         }
         System.out.println("└──────────────────────────────┘");
     }
 
-    // --- MÉTODOS NECESARIOS PARA QUE EL JUEGO FUNCIONE ---
+    // --- NECESSARY METHODS FOR GAME LOGIC ---
 
-    // 1. Tachar número
+    // 1. Mark number
     public boolean markNumber(int number) {
         for (int i = 0; i < card.length; i++) {
             for (int j = 0; j < card[i].length; j++) {
                 if (card[i][j] == number) {
-                    card[i][j] = -1; // Marcamos con -1
+                    card[i][j] = -1; // Mark with -1
                     return true;
                 }
             }
@@ -85,21 +85,21 @@ public class Card {
         return false;
     }
 
-    // 2. Comprobar Línea
+    // 2. Check Row
     public boolean checkLine() {
         for (int i = 0; i < card.length; i++) {
-            int contador = 0;
+            int counter = 0;
             for (int j = 0; j < card[i].length; j++) {
                 if (card[i][j] == -1) {
-                    contador++;
+                    counter++;
                 }
             }
-            if (contador == 5) return true; // Fila completa
+            if (counter == 5) return true; // Full row found
         }
         return false;
     }
 
-    // 3. Comprobar Bingo
+    // 3. Check Bingo
     public boolean checkBingo() {
         for (int i = 0; i < card.length; i++) {
             for (int j = 0; j < card[i].length; j++) {
