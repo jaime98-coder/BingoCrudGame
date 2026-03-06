@@ -12,32 +12,32 @@ public class Card {
         fillCard();
     }
 
-    // Generates a random number between 1 and 99
+    // Generates a random numberGameber between 1 and 99
     private int generateNumber() {
         int cardNumber;
         cardNumber = rd.nextInt(1, 100); 
         return cardNumber;
     }
 
-    // Fills the matrix ensuring no numbers are repeated
+    // Fills the matrix ensuring no numberGamebers are repeated
     public void fillCard() {
         // Iterate through rows
         for (int i = 0; i < card.length; i++) {
             // Iterate through columns
             for (int j = 0; j < card[i].length; j++) {
                 
-                int num;
+                int numberGame;
                 boolean repeated;
 
                 // Loop to generate a valid unique number
                 do {
-                    num = generateNumber();
+                    numberGame = generateNumber();
                     repeated = false; 
 
                     // Check if the number already exists in the grid
                     for (int r = 0; r < card.length; r++) {
                         for (int c = 0; c < card[r].length; c++) {
-                            if (card[r][c] == num) {
+                            if (card[r][c] == numberGame) {
                                 repeated = true; // Number found, it is a duplicate
                             }
                         }
@@ -45,7 +45,7 @@ public class Card {
                 } while (repeated); // Repeat if duplicate found
 
                 // Assign the unique number to the position
-                card[i][j] = num;
+                card[i][j] = numberGame;
             }
         }
     }
